@@ -1,0 +1,33 @@
+{
+  "name": "void-ui",
+  "version": "1.0.0",
+  "description": "Minimalistic & simplistic UI components for React Native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S0ulDrag0n/void-ui.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "components",
+    "ui",
+    "interface",
+    "es6"
+  ],
+  "author": "S0ulDrag0n",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/S0ulDrag0n/void-ui/issues"
+  },
+  "homepage": "https://github.com/S0ulDrag0n/void-ui#readme",
+  "peerDependencies": {
+    "react-native": "^0.54.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.0"
+  }
+}
