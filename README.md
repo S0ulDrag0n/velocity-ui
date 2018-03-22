@@ -1,2 +1,2 @@
-# void-ui
+# Void-UI
 Minimalistic &amp; simplistic UI.
