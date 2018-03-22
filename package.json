@@ -2,7 +2,7 @@
   "name": "void-ui",
   "version": "0.0.1",
   "description": "Minimalistic & simplistic UI components for React Native",
-  "main": "index.js",
+  "main": "src/ndex.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +18,7 @@
     "interface",
     "es6"
   ],
-  "author": "S0ulDrag0n",
+  "author": "Andy Huang",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/S0ulDrag0n/void-ui/issues"
