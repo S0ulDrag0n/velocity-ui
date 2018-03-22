@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Dimensions, StyleSheet, ScrollView, View } from 'react-native';
-import VirtualizedItem from './VirtualizedItem';
+import VirtualizedItem from '../common/VirtualizedItem';
 
 const styles = StyleSheet.create({
     contentContainer: {
