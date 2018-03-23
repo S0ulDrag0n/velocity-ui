@@ -24,17 +24,10 @@ class VirtualizedGrid extends PureComponent {
         const numCols = numColumns || 1;
 
         const itemWidth = width / numCols;
-        const numRows = Math.ceil(dataArray.length / numCols);
-
-        const itemLayouts = [];
-
-        for (let i = 0; i < numRows; i++) {
-            itemLayouts.push([]);
-        }
 
         this.setState({
             itemWidth,
-            itemLayouts,
+            itemLayouts: [],
             viewportMaxY: height,
         });
     }
@@ -51,6 +44,12 @@ class VirtualizedGrid extends PureComponent {
         const { row, column } = this._determineLayout(index);
 
         const layouts = [...itemLayouts];
+
+        const rowDifference = (row + 1) - layouts.length;
+
+        for (let i = 0; i < rowDifference; i++) {
+            layouts.push([]);
+        }
 
         const size = {
             minY: y,
