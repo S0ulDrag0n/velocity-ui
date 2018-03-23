@@ -19,7 +19,7 @@ class VirtualizedGrid extends PureComponent {
     };
     _onLayout = ({ nativeEvent }) => {
         const { width, height }  = nativeEvent.layout;
-        const { dataArray, numColumns } = this.props;
+        const { numColumns } = this.props;
 
         const numCols = numColumns || 1;
 
