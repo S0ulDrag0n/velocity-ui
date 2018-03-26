@@ -2,19 +2,70 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
-export default class VirtualizedItem extends PureComponent {
-    _onLayout = ({ nativeEvent }) => {
-        const { gridIndex } = this.props;
+class VirtualizedItem extends PureComponent {
+    state = {
+        visible: true,
+        body: {
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+        },
+        height: null,
+    };
+    componentWillReceiveProps(nextProps) {
+        const { body } = this.state;
+        const { bounds } = nextProps;
+
+        const visible = this._hasCollided(bounds, body);
+
+        if (visible === this.state.visible) {
+            return;
+        }
+
+        this.setState({
+            visible,
+        });
+    }
+    _onLayout = event => {
+        const { bounds } = this.props;
+        const { x, y, width, height } = event.nativeEvent.layout;
+
+        const body = {
+            left: x,
+            top : y,
+            right: x + width,
+            bottom: y + height,
+        };
+
+        const visible = this._hasCollided(bounds, body);
+
+        this.setState({
+            visible,
+            body,
+            height,
+        });
 
         if (this.props.onLayout) {
-            this.props.onLayout(nativeEvent, gridIndex);
+            this.props.onLayout(event);
         }
     }
-    render() {
-        const { hidden, style, children } = this.props;
+    _hasCollided = (rect1, rect2) => {
+        const bottomTop = rect1.bottom < rect2.top;
+        const topBottom = rect1.top > rect2.bottom;
+        const leftRight = rect1.left > rect2.right;
+        const rightLeft = rect1.right < rect2.left;
 
-        if (hidden) {
-            return <View {...style} onLayout={this._onLayout} />;
+        const collision = !(leftRight || rightLeft || bottomTop || topBottom);
+
+        return collision;
+    }
+    render() {
+        const { style, children } = this.props;
+        const { visible, height } = this.state;
+
+        if (!visible) {
+            return <View style={[style, { minHeight: height, maxHeight: height }]} onLayout={this._onLayout} />;
         }
 
         return (
@@ -24,9 +75,10 @@ export default class VirtualizedItem extends PureComponent {
 }
 
 VirtualizedItem.propTypes = {
-    gridIndex: PropTypes.number,
+    bounds: PropTypes.object,
     style: PropTypes.any,
     children: PropTypes.any,
-    hidden: PropTypes.bool,
     onLayout: PropTypes.func,
 };
+
+export { VirtualizedItem };
