@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { detectBoxCollision } from '../utils/CollisionDetection';
 
 class VirtualizedItem extends PureComponent {
     state = {
         visible: true,
         body: {
+            originX: 0,
+            originY: 0,
+            radius: 0,
             left: 0,
             top: 0,
             right: 0,
@@ -28,10 +32,21 @@ class VirtualizedItem extends PureComponent {
         });
     }
     _onLayout = event => {
-        const { bounds } = this.props;
+        const { bounds, useShortRadius } = this.props;
         const { x, y, width, height } = event.nativeEvent.layout;
 
+        const originX = x + width / 2;
+        const originY = y + height / 2;
+
+        const longest = height <= width ? width : height;
+        const shortest = height <= width ? height : width;
+
+        const radius = (useShortRadius ? shortest : longest) / 2;
+
         const body = {
+            originX,
+            originY,
+            radius,
             left: x,
             top : y,
             right: x + width,
@@ -50,13 +65,10 @@ class VirtualizedItem extends PureComponent {
             this.props.onLayout(event);
         }
     }
-    _hasCollided = (rect1, rect2) => {
-        const bottomTop = rect1.bottom < rect2.top;
-        const topBottom = rect1.top > rect2.bottom;
-        const leftRight = rect1.left > rect2.right;
-        const rightLeft = rect1.right < rect2.left;
+    _hasCollided = (body1, body2) => {
+        const detectionMethod = this.props.collisionDetection || detectBoxCollision;
 
-        const collision = !(leftRight || rightLeft || bottomTop || topBottom);
+        const collision = detectionMethod(body1, body2);
 
         return collision;
     }
@@ -76,9 +88,11 @@ class VirtualizedItem extends PureComponent {
 
 VirtualizedItem.propTypes = {
     bounds: PropTypes.object,
+    useShortRadius: PropTypes.bool,
     style: PropTypes.any,
     children: PropTypes.any,
     onLayout: PropTypes.func,
+    collisionDetection: PropTypes.func,
 };
 
 export { VirtualizedItem };
