@@ -1,5 +1,5 @@
 {
-  "name": "void-ui",
+  "name": "v0id-components",
   "version": "0.0.1",
   "description": "Minimalistic & simplistic UI components for React Native",
   "main": "src/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/S0ulDrag0n/void-ui.git"
+    "url": "git+https://github.com/S0ulDrag0n/velocity-ui.git"
   },
   "keywords": [
     "react",
@@ -21,9 +21,9 @@
   "author": "Andy Huang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/S0ulDrag0n/void-ui/issues"
+    "url": "https://github.com/S0ulDrag0n/velocity-ui.git"
   },
-  "homepage": "https://github.com/S0ulDrag0n/void-ui#readme",
+  "homepage": "https://github.com/S0ulDrag0n/velocity-ui#readme",
   "peerDependencies": {
     "react": "^16.2.0",
     "react-native": "^0.54.2"
