@@ -7,7 +7,11 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
-    contentContainer: {
+    verticalContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+    },
+    horizontalContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
@@ -142,10 +146,13 @@ class VirtualizedGrid extends PureComponent {
         return itemComponents;
     }
     render() {
+        const { horizontal } = this.props;
+
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView
-                    contentContainerStyle={styles.contentContainer}
+                    horizontal={horizontal}
+                    contentContainerStyle={horizontal ? styles.horizontalContainer : styles.verticalContainer}
                     onLayout={this._onGridLayout}
                     onScroll={this._onScroll}
                     removeClippedSubviews
@@ -163,6 +170,7 @@ VirtualizedGrid.propTypes = {
     dataArray: PropTypes.array,
     numColumns: PropTypes.number,
     renderItem: PropTypes.func,
+    horizontal: PropTypes.bool,
     useShortRadius: PropTypes.bool,
     keyExtractor: PropTypes.func,
     collisionDetection: PropTypes.func,
