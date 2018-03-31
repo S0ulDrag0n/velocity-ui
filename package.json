@@ -1,6 +1,6 @@
 {
   "name": "velocity-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Minimalistic & simplistic UI components for React Native",
   "main": "src/index.js",
   "scripts": {
