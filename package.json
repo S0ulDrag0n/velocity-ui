@@ -4,19 +4,29 @@
   "description": "Minimalistic & simplistic UI components for React Native",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "flow start": "flow start",
+    "flow stop": "flow stop",
+    "flow status": "flow status",
+    "flow coverage": "flow coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/S0ulDrag0n/velocity-ui.git"
   },
   "keywords": [
+    "android",
+    "ios",
     "react",
+    "native",
     "react-native",
-    "components",
+    "native-modules",
+    "react-component",
+    "component",
     "ui",
     "interface",
-    "es6"
+    "es6",
+    "virtualized",
+    "grid"
   ],
   "author": "Andy Huang",
   "license": "MIT",
@@ -34,9 +44,9 @@
     "babel-plugin-transform-remove-console": "^6.9.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react-native": "^4.0.0",
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.68.0"
+    "flow-bin": "^0.69.0"
   },
   "dependencies": {
     "prop-types": "^15.6.1"

@@ -5,7 +5,7 @@ A library containing React Native components that do what it should do in a perf
 
 ## Components
 ### Virtualized Grid
-The virtualized grid only renders items as it comes into view to maintain a level of usability when rendering and scrolling. Out of view components are replaced with blank, same sized View components to reduce rendering load.
+The virtualized grid only renders items as it comes into view to maintain a level of usability when rendering and scrolling. Out of view components are replaced with blank, same sized View components to reduce rendering load. The main goal of this component is to circumvent using the FlatList, which at the time of writing this, has performance issues rendering a decent to large number of complex components.
 #### Props
 Prop | Default | Type | Description
 -----|---------|------|------------
@@ -16,7 +16,6 @@ horizontal | false | bool | Use the grid horizontally. (Optional)
 useShortRadius | false | bool | When determining an item's collision radius, use the shortest dimension instead. (Optional)
 keyExtractor | - | function | Function to pull out the key for each child component rendered. Takes a single data element from **dataArray** as the parameter.
 collisionDetection | boundingBox | function | Function that calculates whether an item has entered the screen. Takes two component body metadata as parameters. Refer to the [Utility](#utility) section.
-
 ## Utility
 ### Collision Detection
 The library currently provides two types of bodies for collision detection by default: **bounding box** and **bounding circle**.
