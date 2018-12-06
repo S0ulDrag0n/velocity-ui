@@ -1,16 +1,12 @@
 {
   "name": "velocity-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Minimalistic & simplistic UI components for React Native",
   "main": "src/index.js",
   "scripts": {
-    "compile": "rm -rf dist/* && babel . --out-dir dist --ignore node_modules,dist --source-maps",
+    "compile": "rimraf dist/* && babel . --out-dir dist --ignore node_modules,dist --source-maps",
     "transpile": "npm run compile",
-    "prepublish": "npm run transpile",
-    "flow start": "flow start",
-    "flow stop": "flow stop",
-    "flow status": "flow status",
-    "flow coverage": "flow coverage"
+    "prepublish": "npm run transpile"
   },
   "repository": {
     "type": "git",
@@ -38,20 +34,20 @@
   },
   "homepage": "https://github.com/S0ulDrag0n/velocity-ui#readme",
   "peerDependencies": {
-    "react": "^16.2.0",
-    "react-native": "^0.54.2"
+    "react": "^16.6.3",
+    "react-native": "^0.57.7"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-plugin-transform-remove-console": "^6.9.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-preset-flow": "^6.23.0",
-    "babel-preset-react-native": "^4.0.0",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.69.0"
+    "babel-preset-react-native": "^4.0.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-react": "^7.11.1",
+    "rimraf": "^2.6.2"
   },
   "dependencies": {
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.6.2"
   }
 }
