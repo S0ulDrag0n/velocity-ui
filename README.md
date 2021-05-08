@@ -1,3 +1,5 @@
+**No longer maintained. Feel free to continue to use it.**
+
 # Velocity-UI
 Minimalistic &amp; simple UI.
 
